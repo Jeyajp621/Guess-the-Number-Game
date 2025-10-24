@@ -30,4 +30,3 @@ Try to guess the correct number between 1 and 10 before your score runs out!
 
 ---
 
-## 📁 Folder Structure

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess The Number Game</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .game-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            width: 450px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(6px);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 15px;
+            font-size: 16px;
+            outline: none;
+            text-align: center;
+        }
+        button {
+            background-color: #00ff99;
+            color: black;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #00cc77;
+            transform: scale(1.05);
+        }
+        p {
+            font-size: 18px;
+        }
+        #s {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Guess the Number (1 to 10)</h1>
+        <input type="number" id="n1" placeholder="Enter your guess">
+        <button onclick="guessing()">Check</button>
+        <p id="p1">Maybe you are right or wrong! Ready 😊</p>
+        <p id="s">Score: 10</p>
+    </div>
+
+    <script>
+        let score = 10;
+
+        function guessing() {
+            let n1 = parseInt(document.getElementById("n1").value);
+            let ran = Math.floor(Math.random() * 10) + 1;
+
+            if (ran === n1) {
+                document.getElementById("p1").innerText = "✅ Your guess is right! 🎉";
+            } else {
+                document.getElementById("p1").innerText = "❌ Wrong! The number was " + ran;
+                score--;
+                document.getElementById("s").innerText = "Score: " + score;
+
+                if (score <= 0) {
+                    document.getElementById("p1").innerText = "💀 Game Over!";
+                    document.getElementById("n1").disabled = true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
